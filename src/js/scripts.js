@@ -9,6 +9,7 @@ const formatador = (data) => {                       //Utiliza uma biblioteca qu
         },
         mes:dayjs(data).format('MMMM'),         //ficar por extenso o mes
         hora:dayjs(data).format('HH:mm')
+        
     }
 }
 
@@ -19,7 +20,7 @@ const atividade = {
     finalizada: false
 }
 
- const atividades = [                                             //cria uma array com atividades
+ let atividades = [                                             //cria uma array com atividades
     atividade,
         {
             nome: "Jantar",
@@ -58,6 +59,7 @@ criarItemDeAtividade = (atividade) => {
                 dia ${formatar.dia.numerico}
                 de ${formatar.mes}
                 ás ${formatar.hora}h
+                até as ${formatar.hora}
                 </time>
             </div>`
 }
@@ -66,7 +68,8 @@ criarItemDeAtividade = (atividade) => {
     const attList = () => { 
 
     const section = document.querySelector('section')               //cria uma const section, que vai encontrar a section dentro do html
-
+       section.innerHTML = ""
+    
     if(atividade.length == 0) {                                        //se nao houver nenhuma atividade, vai emitir um P com essa mensagem
         section.innerHTML = '<p>Nenhuma atividade cadastrada</p>'
         return
@@ -94,14 +97,14 @@ const salvarAtividade = (event) => {
 
         const data = `${dia} ${hora}`
 
-    const novaAtividade = {
+    const novaAtividade = {                                     //vai criar uma nova atividade pra ser inserida dentro do array atividades na proxima linha
         nome,
         data,
         finalizado: false
 
     }    
 
-    atividades = [novaAtividade, ...atividade]                     //os 3 pontos são o comando "spread" pra concatenar uma nova atividade na lista de atividades
+    atividades = [novaAtividade, ...atividades]                     //os 3 pontos são o comando "spread" pra concatenar uma nova atividade na lista de atividades
 
     attList()   //atualiza a lista de atividades
 }
