@@ -19,7 +19,7 @@ const atividade = {
     finalizada: false
 }
 
-atividades = [                                             //cria uma array com atividades
+ const atividades = [                                             //cria uma array com atividades
     atividade,
         {
             nome: "Jantar",
@@ -40,7 +40,7 @@ atividades = [                                             //cria uma array com 
 
 
 criarItemDeAtividade = (atividade) => {     
-    let input = '<input type="checkbox" '             //pega o input type checkbo (faz o quadradro que pode marcar)
+    let input = '<input type="checkbox" '             //pega o input type checkbox (faz o quadradro que pode marcar)
     
     if(atividade.finalizada) {                       //se o finalizada for true na "atividade", input vai concatenar o input + "checked", que vai deixar 
         input = input + 'checked'                   // o input marcado, visto que ao alocar 'checked" do lado no imput ele fica sempre marco até atualizar a pagina
@@ -63,21 +63,21 @@ criarItemDeAtividade = (atividade) => {
 }
 
 
-const attList = () => { 
+    const attList = () => { 
 
-const section = document.querySelector('section')               //cria uma const section, que vai encontrar a section dentro do html
+    const section = document.querySelector('section')               //cria uma const section, que vai encontrar a section dentro do html
 
- if(atividade.length == 0) {                                        //se nao houver nenhuma atividade, vai emitir um P com essa mensagem
-    section.innerHTML = '<p>Nenhuma atividade cadastrada</p>'
-    return
- }
+    if(atividade.length == 0) {                                        //se nao houver nenhuma atividade, vai emitir um P com essa mensagem
+        section.innerHTML = '<p>Nenhuma atividade cadastrada</p>'
+        return
+    }
 
-for(let atividade of atividades) {                              //le a "atividade"                
-    section.innerHTML += criarItemDeAtividade(atividade)
-}
- }
+    for(let atividade of atividades) {                              //le a "atividade"                
+        section.innerHTML += criarItemDeAtividade(atividade)
+    }
+    }
 
-attList()
+    attList()
 
 
 const salvarAtividade = (event) => {
